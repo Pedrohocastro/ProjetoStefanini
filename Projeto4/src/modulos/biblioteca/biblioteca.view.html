@@ -1,0 +1,106 @@
+<div class="jumbotron">
+  <h1>Hello, {{vm.name}}</h1>
+
+
+  <div class="row">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button>
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Biblioteca</th>
+          <th scope="col">QtdLivros</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+
+      <tbody ng-repeat='biblioteca in vm.bibliotecas'>
+        <tr>
+          <td><b>{{$index+1}}</b></td>
+          <td>{{biblioteca.nome}}</td>
+          <td>{{biblioteca.livros.length}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#editarModal"> Editar</button>
+            <button type="button" class="btn btn-danger">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+
+
+    </table>
+  </div>
+
+  <!-- EDITAR Modal -->
+  <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Biblioteca</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Biblioteca</th>
+              <th scope="col">QtdLivros</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+
+          <tbody ng-repeat='biblioteca in vm.bibliotecas'>
+            <tr>
+              <td><b>{{$index+1}}</b></td>
+              <td>{{biblioteca.nome}}</td>
+              <td>{{biblioteca.livros.length}}</td>
+              <td>
+                <button ng-onclick="livro" type="button" class="btn btn-primary" data-toggle="modal"
+                  data-target="#editarModal"> Editar</button>
+                <button type="button" class="btn btn-danger" ng-click="vm.delete(biblioteca)" >Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- ADICIONAR Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Adicionar Biblioteca</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" placeholder="Digite o nome da Biblioteca" ng-model="vm.novaBiblioteca.nome">
+          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
