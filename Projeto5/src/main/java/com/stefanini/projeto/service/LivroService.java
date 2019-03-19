@@ -21,8 +21,8 @@ public class LivroService {
 		repository.save(livro);
 	}
 	
-	public void delete(Livro livro) {
-		repository.delete(livro);
+	public void delete(Long id) {
+		repository.deleteById(id);
 	}
 	
 	public void update(Livro livro) {

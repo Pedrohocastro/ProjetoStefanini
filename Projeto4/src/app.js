@@ -9,9 +9,9 @@ import './scss/app.scss';
 
 import routing from './app.config';
 
-import biblioteca from './modulos/biblioteca/biblioteca.js';
+
 import home from './modulos/home/home.js';
-// import livro from './modulos/livro/livro';
+import biblioteca from './modulos/dono/biblioteca';
 
 angular
 .module('myApp', [

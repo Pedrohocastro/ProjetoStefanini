@@ -1,0 +1,96 @@
+<div class="jumbotron">
+  <h1>Hello, {{vm.name}}</h1>
+
+  <div class="row">
+    <button class="btn btn-primary btn-sm" ng-click="vm.novaBiblioteca()"data-toggle="modal" data-target="#exampleModal">Cadastrar</button>
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">biblioteca</th>
+          <th scope="col">Qntd</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat='biblioteca in vm.bibliotecas'>
+        <tr>
+          <td><b>{{$index+1}}</b></td>
+          <td>{{biblioteca.nome}}</td>
+          <td>{{biblioteca.livros.length}}</td>
+          <td><button ng-click="vm.editarModal(biblioteca)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" >Editar</button>
+            <button class="btn btn-danger btn-sm" ng-click="vm.excluir(biblioteca.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" maxlength="20" min="3" placeholder="Nome: Máximo 20 caractere" ng-model="vm.biblioteca.nome" />
+      </div>
+      <div ng-if="vm.acao == 'editar'">
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Livro</th>
+              <th scope="col">Ação</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat='livro in vm.biblioteca.livros'>
+            <tr>
+              <td><b>{{$index+1}}</b></td>
+              <td>{{livro.nome}}</td>
+              <td><button class="btn btn-danger btn-sm" ng-click="vm.removerLivro(livro.id)" data-dismiss="modal">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <div ng-if = "vm.biblioteca.livros.length < 5">
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#livroModal" data-dismiss="modal">Adcionar livro</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+        <button type="button" ng-click="vm.salvar(vm.biblioteca)" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="livroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="Adicionar Filho" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" maxlength="20" ng-model="vm.nomeLivro"placeholder="Nome: "  />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        <button type="button" class="btn btn-primary" ng-click="vm.adcionarLivro()" data-dismiss="modal">Salvar Filho</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-
 import BibliotecaController from './biblioteca.controller';
 
 import bibliotecaService from '../../servicos/biblioteca.service';

@@ -13,12 +13,11 @@ export default function routing($stateProvider, $urlRouterProvider) {
       let bibliotecaState = {
         name: 'biblioteca',
         url: '/biblioteca',
-        templateUrl: './modulos/biblioteca/biblioteca.view.html',
+        templateUrl: './modulos/dono/biblioteca.view.html',
         controller: 'BibliotecaController',
         controllerAs: 'vm'
       }
       $stateProvider.state(bibliotecaState);
-
       
       $urlRouterProvider.otherwise('/home')  
 }

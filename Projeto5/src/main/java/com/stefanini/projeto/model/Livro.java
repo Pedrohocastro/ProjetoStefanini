@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table
 public class Livro implements Serializable{
@@ -25,6 +28,7 @@ public class Livro implements Serializable{
 	@Column(name = "LI_NOME")
 	private String nome;
 
+	@JsonProperty(access= Access.WRITE_ONLY)
 	@ManyToOne
 	@JoinColumn(name = "BI_NU", referencedColumnName = "BI_NU")
 	private Biblioteca biblioteca;
@@ -46,12 +50,12 @@ public class Livro implements Serializable{
 		this.id = id;
 	}
 
-	public Biblioteca getDono() {
+	public Biblioteca getBiblioteca() {
 		return biblioteca;
 	}
 
-	public void setDono(Biblioteca dono) {
-		this.biblioteca = dono;
+	public void setBiblioteca(Biblioteca biblioteca) {
+		this.biblioteca = biblioteca;
 	}
 
 	public String getNome() {
